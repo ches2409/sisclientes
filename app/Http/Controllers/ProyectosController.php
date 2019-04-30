@@ -39,7 +39,7 @@ class ProyectosController extends Controller
     public function store(Request $request){
         $this->validate($request, [
             'proyecto'=> 'required',
-            'tipo_proyecto'=>'required | numeric'
+            'tipoProyecto_id'=>'required | numeric'
         ]);
         /* DB::table('proyectos')->insert([
             'proyecto' => $request->input('proyecto'),
@@ -74,7 +74,7 @@ class ProyectosController extends Controller
     public function edit($id){
         // $proyecto = DB::table('proyectos')->where('id', $id)->first();
         $proyecto = Proyecto::findOrFail($id);
-        return view('/proyectos/show', compact('proyecto'));
+        return view('/proyectos.show', compact('proyecto'));
     }
 
     /**

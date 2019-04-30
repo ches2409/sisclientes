@@ -91,9 +91,9 @@
                                                         <div>
                                                             descripción: {{ $proyecto->descripcion }}
                                                         </div>
-                                                        <a href="{{ route('tiposProyectos.show', $proyecto->tipo_proyecto)}}">
+                                                        <a href="{{ route('tiposProyectos.show', $proyecto->tipoProyecto_id)}}">
                                                             <span class="btn bg-blue btn-flat">
-                                                                {{ $proyecto->tipo_proyecto }}
+                                                                {{ $proyecto->tipoProyecto_id }}
                                                             </span>
                                                         </a>
                                                         <a href="">

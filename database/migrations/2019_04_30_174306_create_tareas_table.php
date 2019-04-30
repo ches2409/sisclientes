@@ -16,13 +16,17 @@ class CreateTareasTable extends Migration
         Schema::create('tareas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre', 50);
-            $table->unsignedBigInteger('tipoTarea');
+            $table->unsignedBigInteger('tipoTarea_id');
             $table->date('fecha');
             $table->time('hora')->nullable();
             $table->text('descripcion');
+            $table->unsignedBigInteger('cliente_id');
+            $table->unsignedBigInteger('responsable_id');
             $table->string('estado', 10);
 
-            $table-> foreign('tipoTarea')->references('id')->on('tareatipos')->onDelete('cascade');
+            $table->foreign('tipoTarea_id')->references('id')->on('tareatipos')->onDelete('cascade');
+            $table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('cascade');
+            $table->foreign('responsable_id')->references('id')->on('empleados')->onDelete('cascade');
 
             $table->timestamps();
         });

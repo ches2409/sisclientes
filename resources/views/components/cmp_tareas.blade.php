@@ -21,7 +21,7 @@
 
                 <div class="form-group">
                     <label for="nombre">
-                        actvididad
+                        Nombre de la actvididad
                     </label>
 
                     <input type="text" name="nombre" class="form-control" placeholder=" ..." value="{{ old('nombre') }}">
@@ -29,30 +29,39 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="nombre">
-                        actvididad
+                    <label for="tipoTarea">
+                        Tipo de tarea a la que pertenece
                     </label>
 
-                    <input type="text" name="nombre" class="form-control" placeholder=" ..." value="{{ old('nombre') }}">
-                    {!! $errors->first('nombre', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
+                    <input type="text" name="tipoTarea" class="form-control" placeholder=" ..." value="{{ old('tipoTarea') }}">
+                    {!! $errors->first('tipoTarea', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
                 </div>
 
                 <div class="form-group">
-                    <label for="nombre">
-                        actvididad
+                    <label for="fecha">
+                        Fecha a realizar
                     </label>
 
-                    <input type="text" name="nombre" class="form-control" placeholder=" ..." value="{{ old('nombre') }}">
-                    {!! $errors->first('nombre', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
+                    <input type="date" name="fecha" class="form-control" placeholder=" ..." value="{{ old('fecha') }}">
+                    {!! $errors->first('fecha', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
                 </div>
 
                 <div class="form-group">
-                    <label for="nombre">
-                        actvididad
+                    <label for="hora">
+                        Hora
                     </label>
 
-                    <input type="text" name="nombre" class="form-control" placeholder=" ..." value="{{ old('nombre') }}">
-                    {!! $errors->first('nombre', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
+                    <input type="time" name="hora" class="form-control" placeholder=" ..." value="{{ old('hora') }}">
+                    {!! $errors->first('hora', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
+                </div>
+
+                <div class="form-group">
+                    <label for="descripcion">
+                        Descripcion de la actividad
+                    </label>
+
+                    <input type="text" name="descripcion" class="form-control" placeholder=" ..." value="{{ old('descripcion') }}">
+                    {!! $errors->first('descripcion', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
                 </div>
 
                 <div class="form-group">

@@ -17,10 +17,10 @@ class CreateProyectosTable extends Migration
             $table->bigIncrements('id');
             $table->string('proyecto', 50)->unique();
             $table->string('ubicacion')->nullable();
-            $table->unsignedBigInteger('tipo_proyecto');
+            $table->unsignedBigInteger('tipoProyecto_id');
             $table->text('descripcion')->nullable();
 
-            $table->foreign('tipo_proyecto')->references('id')->on('tiposProyectos')->onDelete('cascade');
+            $table->foreign('tipoProyecto_id')->references('id')->on('tiposProyectos')->onDelete('cascade');
 
             $table->timestamps();
         });

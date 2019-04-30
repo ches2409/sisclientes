@@ -38,11 +38,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="tipo_proyecto">
+                    <label for="tipoProyecto_id">
                         Tipo de Proyecto
                     </label>
-                    <input type="text" name="tipo_proyecto" class="form-control" placeholder=" ..." value="{{ old('tipo_proyecto') }}">
-                    {!! $errors->first('tipo_proyecto', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
+                    <input type="text" name="tipoProyecto_id" class="form-control" placeholder=" ..." value="{{ old('tipoProyecto_id') }}">
+                    {!! $errors->first('tipoProyecto_id', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
                 </div>
 
                 <!-- textarea -->
