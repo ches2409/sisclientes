@@ -16,17 +16,13 @@ Route::get('tareas1', function () {
     // return \App\Tareatipo::with('tareas')->get();
 });
 
+Route::get('show2', function(){
+    return view('/tareas.tareas2');
+});
+
 Route::get('/', 'PagesController@HOME')->name('inicio');
 
 Route::get('clientes', 'PagesController@CLIENTES')->name('clientes');
-
-// Route::get('actividades', 'PagesController@ACTIVIDADES')->name('actividades');
-
-Route::get('necesidadesPrim', 'PagesController@NECESIDADESPRIM')->name('necesidadesPrim');
-
-// Route::get('tiposProyectos', 'PagesController@TIPOSPROYECTOS')->name('tiposProyectos');
-// Route::get('proyectos', 'PagesController@PROYECTOS')->name('proyectos');
-// Route::get('usuarios', 'PagesController@USUARIOS')->name('usuarios');
 
 
 /* SECTION Tipos de Proyectos
@@ -45,7 +41,6 @@ Route::put('tiposProyectos/{id}', 'TiposproyController@update')->name('tiposProy
 Route::delete('tiposProyectos/{id}', 'TiposproyController@destroy')->name('tiposProyectos.destroy');
 
 Route::resource('proyectos', 'ProyectosController');
-
 // Route::get('proyectos/create', 'ProyectosController@create')->name('proyectos.create');
 // Route::post('proyectos', 'ProyectosController@store')->name('proyectos.store');
 // Route::get('proyectos', 'ProyectosController@index')->name('proyectos.index');
@@ -63,6 +58,24 @@ Route::resource('empleados', 'EmpleadosController');
 // Route::put('empleados/{id}', 'EmpleadosController@update')->name('empleados.update');
 // Route::delete('empleados/{id}', 'EmpleadosController@destroy')->name('empleados.destroy');
 
+// ->except('create', 'store', 'show', 'edit', 'update', 'destroy')
+
 Route::resource('tareatipos', 'TareatiposController');
 
 Route::resource('tareas', 'TareasController');
+
+Route::resource('cargos', 'CargosController');
+
+Route::resource('tiempoinversiones', 'TiempoinversionesController');
+
+Route::resource('clasificaciones', 'ClasificacionesController');
+
+Route::resource('propiedadestados', 'PropiedadestadosController');
+
+Route::resource('tipoclientes', 'TipoclientesController');
+
+Route::resource('propventas', 'PropventasController');
+
+Route::resource('referidos', 'ReferidosController');
+
+Route::resource('dispopagos', 'DispopagosController');

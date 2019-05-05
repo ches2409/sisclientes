@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Propiedadestado;
 
 class PropiedadestadosController extends Controller
 {
@@ -13,7 +14,8 @@ class PropiedadestadosController extends Controller
      */
     public function index()
     {
-        //
+        $propiedadestados = Propiedadestado::all();
+        return view('/propiedadestados.index', compact('propiedadestados'));
     }
 
     /**
@@ -23,7 +25,7 @@ class PropiedadestadosController extends Controller
      */
     public function create()
     {
-        //
+        return view('/propiedadestados.create');
     }
 
     /**
@@ -34,7 +36,11 @@ class PropiedadestadosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nombre' => 'required'
+        ]);
+        Propiedadestado::create($request->all());
+        return redirect()->route('propiedadestados.index');
     }
 
     /**
@@ -45,7 +51,8 @@ class PropiedadestadosController extends Controller
      */
     public function show($id)
     {
-        //
+        $propiedadestado = Propiedadestado::findOrFail($id);
+        return view('/propiedadestados.edit', compact('propiedadestado'));
     }
 
     /**
@@ -56,7 +63,8 @@ class PropiedadestadosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $propiedadestado = Propiedadestado::findOrFail($id);
+        return view('/propiedadestados.show', compact('propiedadestado'));
     }
 
     /**
@@ -68,7 +76,8 @@ class PropiedadestadosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Propiedadestado::findOrFail($id)->update($request->all());
+        return redirect()->route('propiedadestados.index');
     }
 
     /**
@@ -79,6 +88,7 @@ class PropiedadestadosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Propiedadestado::findOrFail($id)->delete();
+        return redirect()->route('propiedadestados.index');
     }
 }

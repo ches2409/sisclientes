@@ -17,9 +17,14 @@ class CreateReferidosTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre', 50);
             $table->string('telefono');
+            $table->bigIncrements('refiere');
             $table->string('parentesco');
             $table->text('notas');
+
+            $table->foreign('refiere')->references('id')->on('clientes');
+
             $table->timestamps();
+
         });
     }
 

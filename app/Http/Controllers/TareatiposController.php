@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Tareatipo;
+use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 
 class TareatiposController extends Controller
@@ -40,7 +42,10 @@ class TareatiposController extends Controller
             'tipoTarea' => 'required',
             'area'=>'required'
         ]);
+        // $tareatipo=Tareatipo::all();
+        $tareatipo = new Tareatipo($request->all());
         Tareatipo::create($request->all());
+        Flash::success('Se ha creado el tipo de tarea "'.$tareatipo->tipoTarea.'" de manera correcta');
         return redirect()->route('tareatipos.index');
     }
 
@@ -87,9 +92,11 @@ class TareatiposController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Request $request, $id)
     {
         Tareatipo::findOrFail($id)->delete();
+        $tareatipo = new Tareatipo($request->all());
+        Flash::error( 'Se ha eliminado el tipo de tarea de manera correcta'.$tareatipo->tipoTarea);
         return redirect()->route( 'tareatipos.index');
     }
 }

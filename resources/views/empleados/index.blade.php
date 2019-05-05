@@ -4,6 +4,10 @@
     Empleados
 @endsection
 
+@section('tablas')
+    @include('/empleados.tabla')
+@endsection
+
 {{-- SECTION  Secciones internas
 +==========================================================+
 |                      SECCIÓN DONDE                       |
@@ -18,20 +22,25 @@
 
     @section('content')
         <div class="content">
-            {{-- <h1>Empleados</h1> --}}
 
-            <div class="box-header">
-                <h1>
-                    <i class="fa fa-id-card"></i>
-                    Empleados
-                </h1>
-                <div class="box-tools">
-                    <div class="input-group input-group-sm" style="width: 200px;">
-                        <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscar">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h1>
+                            <i class="fa fa-id-card"></i>
+                            Empleados
+                        </h1>
+                    </div>
+                    <div class="col-lg-3">
+                        <div><br></div>
+                        <div class="input-group input-group-sm" style="width: 200px;">
+                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscar">
 
-                        <div class="input-group-btn">
-                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </div>
                         </div>
+                        <div><br></div>
                     </div>
                 </div>
             </div>
@@ -42,7 +51,7 @@
                         <h3 class="box-title">Crear, editar o eliminar Empleados</h3>
 
                         <div class="box-tools">
-                            <a class="btn bg-dark btn-flat" href="{{ route('proyectos.create') }}">
+                            <a class="btn bg-dark btn-flat" href="{{ route('empleados.create') }}">
                                 <span class="glyphicon glyphicon-file"></span>
                                 Nuevo
                             </a>
@@ -51,76 +60,9 @@
                                 Salir
                             </a>
                         </div>
-
-                        {{-- <div class="box-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscar">
-
-                                <div class="input-group-btn">
-                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                </div>
-                            </div>
-                        </div> --}}
-
+                        <div><p></p></div>
                     </div>
-                    <div class="box-body table-responsive no-padding">
-                        <div class="box box-warning">
-                            <table class="table table-hover table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Nombre de Empleado</th>
-                                        <th>Número de Identificación</th>
-                                        <th>Fecha de Nacimiento</th>
-                                        <th>e-mail</th>
-                                        <th>Dirección</th>
-                                        <th>Teléfono</th>
-                                        <th>Cargo</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($empleados as $empleado)
-                                        <tr>
-                                            <td>{{ $empleado->nombre }}</td>
-                                            <td>{{ $empleado->identificacion }}</td>
-                                            <td>{{ $empleado->fechaNacimiento }}</td>
-                                            <td>{{ $empleado->email }}</td>
-                                            <td>{{ $empleado->direccion }}</td>
-                                            <td>{{ $empleado->telefono }}</td>
-                                            <td>{{ $empleado->cargo }}</td>
-                                            <td>
-                                                <a class="btn bg-dark btn-flat" href="{{ route('empleados.show', $empleado->id) }}">
-                                                    <span class="glyphicon glyphicon-pencil"></span>
-                                                    Editar
-                                                </a>
-
-                                                <form style="display:inline" method="POST" action="{{ route ('empleados.destroy', $empleado->id) }}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn bg-dark btn-flat">
-                                                        <span class="glyphicon glyphicon-trash"></span>
-                                                        Eliminar
-                                                    </button>
-                                                </form>
-                                                {{-- <a class="btn bg-dark btn-flat" href="">
-                                                    <span class="glyphicon glyphicon-trash"></span>
-                                                    Eliminar
-                                                </a> --}}
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    {{-- <a class="btn bg-dark btn-flat" href="{{ route('empleados.create') }}">
-                        <span class="glyphicon glyphicon-file"></span>
-                        Nuevo
-                    </a>
-                    <a class="btn bg-dark btn-flat" href="/">
-                        <span class="glyphicon glyphicon-remove"></span>
-                        Salir
-                    </a> --}}
+                    @yield('tablas')
                 </div>
             </div>
         </div>

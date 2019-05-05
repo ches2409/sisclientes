@@ -17,7 +17,7 @@ class TiposproyController extends Controller
     public function index(){
         $tiposProyectos = DB::table('tiposProyectos')->get();
 
-        return view ('/tiposProyectos/tiposProyectos', compact( 'tiposProyectos'));
+        return view ('/tiposProyectos.index', compact( 'tiposProyectos'));
     }
 
     /**

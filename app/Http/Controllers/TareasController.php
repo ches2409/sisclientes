@@ -37,8 +37,12 @@ class TareasController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'tipoTarea' => 'required',
-            'area' => 'required'
+            'nombre' => 'required',
+            'tipoTarea_id' => 'required',
+            'fecha' => 'required',
+            'hora' => 'required',
+            'cliente_id' => 'required',
+            'responsable_id' => 'required'
         ]);
         Tarea::create($request->all());
         return redirect()->route('tareas.index');

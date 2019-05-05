@@ -20,39 +20,60 @@
             <div class="box-body">
 
                 <div class="form-group">
-                    <label for="nombre">
+                    {{-- <label for="nombre">
                         Nombre de la actvididad
-                    </label>
+                    </label> --}}
+
+                    {!! Form::label('nombre', 'Nombre de la Actividad') !!}
 
                     <input type="text" name="nombre" class="form-control" placeholder=" ..." value="{{ old('nombre') }}">
                     {!! $errors->first('nombre', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
                 </div>
 
                 <div class="form-group">
-                    <label for="tipoTarea">
+                    <label for="tipoTarea_id">
                         Tipo de tarea a la que pertenece
                     </label>
 
-                    <input type="text" name="tipoTarea" class="form-control" placeholder=" ..." value="{{ old('tipoTarea') }}">
-                    {!! $errors->first('tipoTarea', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
+                    <input type="numeric" name="tipoTarea_id" class="form-control" placeholder=" ..." value="{{ old('tipoTarea_id') }}">
+                    {!! $errors->first('tipoTarea_id', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
                 </div>
 
-                <div class="form-group">
-                    <label for="fecha">
-                        Fecha a realizar
-                    </label>
 
-                    <input type="date" name="fecha" class="form-control" placeholder=" ..." value="{{ old('fecha') }}">
-                    {!! $errors->first('fecha', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
-                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="fecha">
+                            Fecha a realizar
+                        </label>
 
-                <div class="form-group">
-                    <label for="hora">
-                        Hora
-                    </label>
+                        <div class="input-group date">
+                            <input type="text" name="fecha" class="form-control datepicker datemask3" value="{{ old('fecha') }}">
+                            {!! $errors->first('fecha', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
 
-                    <input type="time" name="hora" class="form-control" placeholder=" ..." value="{{ old('hora') }}">
-                    {!! $errors->first('hora', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
+                            <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="bootstrap-timepicker col-md-6">
+                        <div class="form-group">
+                            <label for="hora">
+                                Hora
+                            </label>
+                            <div class="input-group">
+                                <input type="text" name="hora" class="form-control timepicker" value="{{ old('hora') }}">
+                                {!! $errors->first('hora', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
+
+                                <div class="input-group-addon">
+                                <i class="fa fa-clock-o"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="form-group">
@@ -64,16 +85,34 @@
                     {!! $errors->first('descripcion', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
                 </div>
 
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="cliente_id">
+                            Cliente al que corresponde
+                        </label>
+
+                        <input type="text" name="cliente_id" class="form-control" placeholder=" ..." value="{{ old('cliente_id') }}">
+                        {!! $errors->first('cliente_id', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="responsable_id">
+                            Responsable de ejecutar
+                        </label>
+
+                        <input type="text" name="responsable_id" class="form-control" placeholder=" ..." value="{{ old('responsable_id') }}">
+                        {!! $errors->first('responsable_id', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
+                    </div>
+                </div>
+
+
                 <div class="form-group">
-                    <label for="area">
-                        Área a la que corresponde este tipo de tarea
+                    <label for="estado">
+                        Estado
                     </label>
-                    <select class="form-control custom-select" name="area">
-                        <option value="Comercial">Comercial</option>
-                        <option value="Administrativa">Administrativa</option>
-                        <option value="Compartida">Compartida</option>
-                        <option selected></option>
-                    </select>
+
+                    <input type="text" name="estado" class="form-control" placeholder=" ..." value="{{ old('estado') }}">
+                    {!! $errors->first('estado', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
                 </div>
 
 
@@ -94,11 +133,6 @@
                     <span class="glyphicon glyphicon-ok"></span>
                     Guardar
                 </button>
-
-                {{-- <button type="reset" class="btn bg-dark btn-flat">
-                    <span class="glyphicon glyphicon-remove"></span>
-                    Cancelar
-                </button> --}}
 
                 <a class="btn bg-dark btn-flat" href="{{ route('tareas.index') }}">
                     <span class="glyphicon glyphicon-remove"></span>

@@ -18,10 +18,13 @@ class CreateEmpleadosTable extends Migration
             $table->string('nombre', 50);
             $table->integer('identificacion')->unique();
             $table->date('fechaNacimiento');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('direccion');
             $table->string('telefono');
-            $table->string('cargo');
+            $table->unsignedBigInteger('cargo_id');
+
+            $table->foreign('cargo_id')->references('id')->on('cargos')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

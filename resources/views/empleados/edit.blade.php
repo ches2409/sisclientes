@@ -103,12 +103,12 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="cargo" class="col-sm-2 control-label">
+                            <label for="cargo_id" class="col-sm-2 control-label">
                                 Cargo
                             </label>
                             <div class="col-sm-9">
-                                <input type="text" name="cargo" class="form-control" placeholder=" ..." value="{{ $empleado->cargo }}">
-                                {!! $errors->first('cargo', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
+                                <input type="text" name="cargo_id" class="form-control" placeholder=" ..." value="{{ $empleado->cargo_id }}">
+                                {!! $errors->first('cargo_id', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
                             </div>
                         </div>
 

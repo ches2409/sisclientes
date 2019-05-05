@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Propventa;
 use Illuminate\Http\Request;
 
 class PropventasController extends Controller
@@ -13,7 +14,9 @@ class PropventasController extends Controller
      */
     public function index()
     {
-        //
+        // $propventas = Propventa::all();
+        $propventas = Propventa::orderBy('nombre', 'ASC')->paginate(10);
+        return view('/propventas.index', compact('propventas'));
     }
 
     /**
@@ -23,7 +26,7 @@ class PropventasController extends Controller
      */
     public function create()
     {
-        //
+        return view('/propventas/create');
     }
 
     /**
@@ -34,7 +37,11 @@ class PropventasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nombre' => 'required'
+        ]);
+        Propventa::create($request->all());
+        return redirect()->route('propventas.index');
     }
 
     /**
@@ -45,7 +52,8 @@ class PropventasController extends Controller
      */
     public function show($id)
     {
-        //
+        $propventa = Propventa::findOrFail($id);
+        return view('/propventas.edit', compact('propventa'));
     }
 
     /**
@@ -56,7 +64,8 @@ class PropventasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $propventas = Propventa::findOrFail($id);
+        return view('/propventas.show', compact('propventas'));
     }
 
     /**
@@ -68,7 +77,8 @@ class PropventasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Propventa::findOrFail($id)->update($request->all());
+        return redirect()->route('propventas.index');
     }
 
     /**
@@ -79,6 +89,8 @@ class PropventasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Propventa::findOrFail($id)->delete();
+        Flash::error('Se ha eliminado la propiedad negociable de manera correcta');
+        return redirect()->route('propventas.index');
     }
 }

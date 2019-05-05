@@ -23,7 +23,6 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">Editar</h3>
                 </div>
-
                 @if (session('info'))
                     <div class="callout callout-success">
                         <h4><i class="icon fa fa-check"></i> Datos Almacenados</h4>
@@ -33,6 +32,7 @@
                     </div>
 
                 @else
+
 
                 <form method="POST" action="{{ route ('tareatipos.update', $tareatipo->id) }}" role="form">
                     @method('PUT')
@@ -58,11 +58,23 @@
                             <label for="area">
                                 Área a la que corresponde este tipo de tarea
                             </label>
-                            <select class="form-control" name="area" value="{{ $tareatipo->area }}">
-                                <option value="{{ $tareatipo->area }}" >Comercial</option>
-                                <option>Administrativa</option>
-                                <option value="{{ $tareatipo->area }}" >Compartida</option>
-                                <option></option>
+                            <?php
+                                $areav= $tareatipo->area;
+                            ?>
+                            <select class="form-control" name="area">
+                                @if ($areav=='Comercial')
+                                    <option value="comercial" selected>Comercial</option>
+                                    <option value="administrativa">Administrativa</option>
+                                    <option value="compartida">Compartida</option>
+                                @elseif($areav=='Administrativa')
+                                    <option value="comercial">Comercial</option>
+                                    <option value="administrativa" selected>Administrativa</option>
+                                    <option value="compartida">Compartida</option>
+                                @else
+                                    <option value="comercial">Comercial</option>
+                                    <option value="administrativa">Administrativa</option>
+                                    <option value="compartida" selected>Compartida</option>
+                                @endif
                             </select>
                         </div>
 
@@ -81,6 +93,7 @@
                     </div>
                 </form>
                 @endif
+                @include('flash::message')
             </div>
         </section>
 

@@ -34,10 +34,10 @@
                         Área a la que corresponde este tipo de tarea
                     </label>
                     <select class="form-control custom-select" name="area">
-                        <option value="Comercial">Comercial</option>
-                        <option value="Administrativa">Administrativa</option>
-                        <option value="Compartida">Compartida</option>
-                        <option selected></option>
+                        <option value="" selected>Seleccione una área...</option>
+                        <option value="comercial">Comercial</option>
+                        <option value="administrativa">Administrativa</option>
+                        <option value="compartida">Compartida</option>
                     </select>
                 </div>
 

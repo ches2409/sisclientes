@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tiempoinversion;
 use Illuminate\Http\Request;
 
 class TiempoinversionesController extends Controller
@@ -13,7 +14,8 @@ class TiempoinversionesController extends Controller
      */
     public function index()
     {
-        //
+        $tiempoinversiones = Tiempoinversion::all();
+        return view('/tiempoinversiones.index', compact('tiempoinversiones'));
     }
 
     /**
@@ -23,7 +25,7 @@ class TiempoinversionesController extends Controller
      */
     public function create()
     {
-        //
+        return view('/tiempoinversiones.create');
     }
 
     /**
@@ -34,7 +36,11 @@ class TiempoinversionesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nombre' => 'required'
+        ]);
+        Tiempoinversion::create($request->all());
+        return redirect()->route('tiempoinversiones.index');
     }
 
     /**
@@ -45,7 +51,8 @@ class TiempoinversionesController extends Controller
      */
     public function show($id)
     {
-        //
+        $tiempoinversion = Tiempoinversion::findOrFail($id);
+        return view('/tiempoinversiones.edit', compact('tiempoinversion'));
     }
 
     /**
@@ -56,7 +63,8 @@ class TiempoinversionesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tiempoinversion = Tiempoinversion::findOrFail($id);
+        return view('/tiempoinversiones.show', compact('tiempoinversion'));
     }
 
     /**
@@ -68,7 +76,8 @@ class TiempoinversionesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Tiempoinversion::findOrFail($id)->update($request->all());
+        return redirect()->route('tiempoinversiones.index');
     }
 
     /**
@@ -79,6 +88,7 @@ class TiempoinversionesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Tiempoinversion::findOrFail($id)->delete();
+        return redirect()->route('tiempoinversiones.index');
     }
 }

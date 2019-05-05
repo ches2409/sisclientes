@@ -60,7 +60,7 @@
 |     "TREEVIEW"      |
 +=====================+
 --}}
-    <li class="c">
+    <li class="{{ request()->is('clientes', 'clientes/*' ) ? 'active' : '' }}">
         <a href="{{ route ('clientes') }}">
             <i class="fa fa-address-book"></i>
             <span>Clientes</span>
@@ -106,7 +106,7 @@
 |       "TREEVIEW"       |
 +========================+
 --}}
-    <li class="{{ activeMenu('actividades') }}">
+    <li class="{{ activeMenu('tareas') }}">
         <a href="{{ route ('tareas.index') }}">
             <i class="fa fa-calendar"></i>
             <span>Actividades</span>
@@ -129,7 +129,7 @@
 |      "TREEVIEW"       |
 +=======================+
 --}}
-    <li class="{{ request()->is('usuarios', 'necesidadesPrim','tiposProyectos','tiposProyectos/create', 'tareatipos', 'tareatipos/*') ? 'active' : '' }} treeview">
+    <li class="{{ request()->is('usuarios', 'cargos', 'cargos/*', 'tiempoinversiones', 'tiempoinversiones/*', 'clasificaciones', 'clasificaciones/*', 'propiedadestados', 'propiedadestados/*', 'tipoclientes', 'tipoclientes/*', 'propventas', 'propventas/*', 'referidos', 'referidos/*', 'dispopagos', 'dispopagos/*',  'necesidadesPrim','tiposProyectos','tiposProyectos/*', 'tareatipos', 'tareatipos/*') ? 'active' : '' }} treeview">
         <a href="#">
             <i class="fa fa-wrench"></i>
             <span>Parametros</span>
@@ -144,30 +144,66 @@
                     Usuarios
                 </a>
             </li>
-            <li class="{{ activeMenu('necesidadesPrim') }}">
+
+            <li class="{{ activeMenu('cargos') }}">
+                <a href="{{ route('cargos.index') }}">
+                    <i class="fa fa-mortar-board"></i>
+                    Cargos
+                </a>
+            </li>
+
+            <li class="{{ activeMenu('tipoclientes') }}">
+                <a href="{{ route('tipoclientes.index') }}">
+                    <i class="fa fa-check-circle"></i>
+                    Estados del cliente
+                </a>
+            </li>
+
+            <li class="{{ activeMenu('referidos') }}">
+                <a href="{{ route('referidos.index') }}">
+                    <i class="fa fa-street-view"></i>
+                    Referidos
+                </a>
+            </li>
+
+            {{-- <li class="{{ activeMenu('necesidadesPrim') }}">
                 <a href="{{ route ('necesidadesPrim') }}">
                     <i class="fa fa-bullseye"></i>
                     necesidades del cliente
                 </a>
-            </li>
+            </li> --}}
 
             {{-- sub elemento interno --}}
-            <li>
+            {{-- <li>
                 <a href="#">
                     <i class="fa fa-car"></i>
                     otras necesidades
                 </a>
-            </li>
+            </li> --}}
             {{-- sub elemento interno --}}
-            <li>
-                <a href="#">
+            <li {{ activeMenu('propventas') }}>
+                <a href="{{ route('propventas.index') }}">
                     <i class="fa fa-shopping-bag"></i>
                     propiedades negociables
                 </a>
             </li>
             {{-- sub elemento interno --}}
-            <li>
-                <a href="#">
+            <li {{ activeMenu('dispopagos') }}>
+                <a href="{{ route('dispopagos.index') }}">
+                    <i class="fa fa-money"></i>
+                    Disponibilidad de pago
+                </a>
+            </li>
+            {{-- sub elemento interno --}}
+            <li class="{{ activeMenu('propiedadestados') }}">
+                <a href="{{ route('propiedadestados.index') }}">
+                    <i class="fa fa-bank"></i>
+                    Estados de la propiedad
+                </a>
+            </li>
+            {{-- sub elemento interno --}}
+            <li class="{{ activeMenu('tiempoinversiones') }}">
+                <a href="{{ route('tiempoinversiones.index') }}">
                     <i class="fa fa-hourglass-start"></i>
                     tiempos de inversión
                 </a>
@@ -175,7 +211,7 @@
             {{-- sub elemento interno --}}
             <li class="{{ activeMenu('tiposProyectos') }}">
                 <a href="{{ route('tiposProyectos.index') }}">
-                    <i class="fa fa-building"></i>
+                    <i class="fa fa-building-o"></i>
                     tipos de proyectos
                 </a>
             </li>
@@ -187,8 +223,8 @@
                 </a>
             </li>
             {{-- sub elemento interno --}}
-            <li>
-                <a href="#">
+            <li class="{{ activeMenu('clasificaciones') }}">
+                <a href="{{ route('clasificaciones.index') }}">
                     <i class="fa fa-list"></i>
                     clasificación
                 </a>

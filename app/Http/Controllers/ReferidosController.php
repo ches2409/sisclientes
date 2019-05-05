@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Referido;
 use Illuminate\Http\Request;
 
 class ReferidosController extends Controller
@@ -13,7 +14,9 @@ class ReferidosController extends Controller
      */
     public function index()
     {
-        //
+        // $referidos = referido::all();
+        $referidos = Referido::orderBy('nombre', 'ASC')->paginate(10);
+        return view('/referidos.index', compact('referidos'));
     }
 
     /**
@@ -23,7 +26,7 @@ class ReferidosController extends Controller
      */
     public function create()
     {
-        //
+        return view('/referidos/create');
     }
 
     /**
@@ -34,7 +37,11 @@ class ReferidosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nombre' => 'required'
+        ]);
+        Referido::create($request->all());
+        return redirect()->route('referidos.index');
     }
 
     /**
@@ -45,7 +52,8 @@ class ReferidosController extends Controller
      */
     public function show($id)
     {
-        //
+        $referido = Referido::findOrFail($id);
+        return view('/referidos.edit', compact('referido'));
     }
 
     /**
@@ -56,7 +64,8 @@ class ReferidosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $referido = Referido::findOrFail($id);
+        return view('/referidos.show', compact('referido'));
     }
 
     /**
@@ -68,7 +77,8 @@ class ReferidosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Referido::findOrFail($id)->update($request->all());
+        return redirect()->route('referidos.index');
     }
 
     /**
@@ -79,6 +89,8 @@ class ReferidosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Referido::findOrFail($id)->delete();
+        Flash::error('Se ha eliminado el referido de manera correcta');
+        return redirect()->route('referidos.index');
     }
 }

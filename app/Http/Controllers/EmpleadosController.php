@@ -14,7 +14,9 @@ class EmpleadosController extends Controller
      */
     public function index()
     {
-        $empleados = Empleado::all();
+        // $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('id', 'ASC')->paginate(10);
+
         return view('/empleados.index', compact('empleados'));
     }
 
@@ -25,7 +27,7 @@ class EmpleadosController extends Controller
      */
     public function create()
     {
-        return view ('/empleados/create');
+        return view ('/empleados.create');
     }
 
     /**
@@ -40,7 +42,7 @@ class EmpleadosController extends Controller
             'nombre' => 'required',
             'identificacion' => 'required | numeric',
             'fechaNacimiento'=>'required',
-            'cargo'=>'required'
+            'cargo_id'=>'required'
         ]);
         Empleado::create($request->all());
         return redirect()->route('empleados.index');
@@ -68,7 +70,7 @@ class EmpleadosController extends Controller
     public function edit($id)
     {
         $empleado = Empleado::findOrFail($id);
-        return view('/empleados/show', compact('empleado'));
+        return view('/empleados.show', compact('empleado'));
     }
 
     /**

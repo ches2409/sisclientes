@@ -46,14 +46,9 @@
                     Guardar
                 </button>
 
-                <button type="reset" class="btn bg-dark btn-flat">
-                    <span class="glyphicon glyphicon-remove"></span>
-                    Cancelar
-                </button>
-
                 <a class="btn bg-dark btn-flat" href="{{ route('tiposProyectos.index') }}">
                     <span class="glyphicon glyphicon-remove"></span>
-                    Salir
+                    Cancelar
                 </a>
 
             </div>

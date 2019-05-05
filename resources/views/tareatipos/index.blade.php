@@ -4,6 +4,10 @@
     tareas
 @endsection
 
+@section('tablas')
+    @include('/tareatipos.tabla')
+@endsection
+
 {{-- SECTION  Secciones internas
 +==========================================================+
 |                      SECCIÓN DONDE                       |
@@ -57,66 +61,9 @@
                                 Salir
                             </a>
                         </div>
-
-                        {{-- <div class="box-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscar">
-
-                                <div class="input-group-btn">
-                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                </div>
-                            </div>
-                        </div> --}}
-
+                        <div><p></p></div>
                     </div>
-                    <div class="box-body table-responsive no-padding">
-                        <div class="box box-warning">
-                            <table class="table table-hover table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Tipo de tarea</th>
-                                        <th>Área a la que corresponde</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($tareatipos as $tareatipo)
-                                        <tr>
-                                            <td>{{ $tareatipo->tipoTarea }}</td>
-                                            <td>{{ $tareatipo->area }}</td>
-                                            <td>
-                                                <a class="btn bg-dark btn-flat" href="{{ route('tareatipos.show', $tareatipo->id) }}">
-                                                    <span class="glyphicon glyphicon-pencil"></span>
-                                                    Editar
-                                                </a>
-
-                                                <form style="display:inline" method="POST" action="{{ route ('tareatipos.destroy', $tareatipo->id) }}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn bg-dark btn-flat">
-                                                        <span class="glyphicon glyphicon-trash"></span>
-                                                        Eliminar
-                                                    </button>
-                                                </form>
-                                                {{-- <a class="btn bg-dark btn-flat" href="">
-                                                    <span class="glyphicon glyphicon-trash"></span>
-                                                    Eliminar
-                                                </a> --}}
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    {{-- <a class="btn bg-dark btn-flat" href="{{ route('tareatipos.create') }}">
-                        <span class="glyphicon glyphicon-file"></span>
-                        Nuevo
-                    </a>
-                    <a class="btn bg-dark btn-flat" href="/">
-                        <span class="glyphicon glyphicon-remove"></span>
-                        Salir
-                    </a> --}}
+                    @yield('tablas')
                 </div>
             </div>
         </div>

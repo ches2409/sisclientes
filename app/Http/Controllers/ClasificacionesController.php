@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Clasificacion;
 use Illuminate\Http\Request;
 
 class ClasificacionesController extends Controller
@@ -13,7 +14,8 @@ class ClasificacionesController extends Controller
      */
     public function index()
     {
-        //
+        $clasificaciones = Clasificacion::all();
+        return view('/clasificaciones.index', compact('clasificaciones'));
     }
 
     /**
@@ -23,7 +25,7 @@ class ClasificacionesController extends Controller
      */
     public function create()
     {
-        //
+        return view('/clasificaciones.create');
     }
 
     /**
@@ -34,7 +36,11 @@ class ClasificacionesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nombre' => 'required'
+        ]);
+        Clasificacion::create($request->all());
+        return redirect()->route('clasificaciones.index');
     }
 
     /**
@@ -45,7 +51,8 @@ class ClasificacionesController extends Controller
      */
     public function show($id)
     {
-        //
+        $clasificacion = Clasificacion::findOrFail($id);
+        return view('/clasificaciones.edit', compact('clasificacion'));
     }
 
     /**
@@ -56,7 +63,8 @@ class ClasificacionesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $clasificacion = Clasificacion::findOrFail($id);
+        return view('/clasificaciones.show', compact('clasificacion'));
     }
 
     /**
@@ -68,7 +76,8 @@ class ClasificacionesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Clasificacion::findOrFail($id)->update($request->all());
+        return redirect()->route('clasificaciones.index');
     }
 
     /**
@@ -79,6 +88,7 @@ class ClasificacionesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Clasificacion::findOrFail($id)->delete();
+        return redirect()->route('clasificaciones.index');
     }
 }

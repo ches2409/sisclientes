@@ -4,6 +4,10 @@
     Clientes
 @endsection
 
+@section('tablas')
+    @include('/clientes.tabla')
+@endsection
+
 {{-- SECTION  Secciones internas
 +==========================================================+
 |                      SECCIÓN DONDE                       |
@@ -14,6 +18,56 @@
 
     @section('itemSide')
         @include('/components/items_side')
+    @endsection
+
+    @section('content')
+        <div class="content">
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h1>
+                            <i class="fa fa-id-card"></i>
+                            Clientes
+                        </h1>
+                    </div>
+                    <div class="col-lg-3">
+                        <div><br></div>
+                        <div class="input-group input-group-sm" style="width: 200px;">
+                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscar">
+
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                        <div><br></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box-header">
+                        <h3 class="box-title">Crear, editar o eliminar Clientes</h3>
+
+                        <div class="box-tools">
+                            <a class="btn bg-dark btn-flat" href="{{ route('empleados.create') }}">
+                                <span class="glyphicon glyphicon-file"></span>
+                                Nuevo
+                            </a>
+                            <a class="btn bg-dark btn-flat" href="/">
+                                <span class="glyphicon glyphicon-remove"></span>
+                                Salir
+                            </a>
+                        </div>
+                        <div><p></p></div>
+                    </div>
+                    @yield('tablas')
+                </div>
+            </div>
+        </div>
+
+
     @endsection
 
 
@@ -63,3 +117,15 @@
     @section('mainFooter')
         @include('/modulos/mainFooter')
     @endsection
+
+
+
+
+
+
+
+
+
+
+
+

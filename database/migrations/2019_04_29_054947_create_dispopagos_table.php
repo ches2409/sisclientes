@@ -16,7 +16,7 @@ class CreateDispopagosTable extends Migration
         Schema::create('dispopagos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre')->unique();
-            $table->text('decripcion');
+            $table->text('descripcion');
             $table->timestamps();
         });
     }

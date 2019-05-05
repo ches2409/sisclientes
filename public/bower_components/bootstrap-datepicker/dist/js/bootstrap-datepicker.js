@@ -1685,7 +1685,7 @@
 		datesDisabled: [],
 		endDate: Infinity,
 		forceParse: true,
-		format: 'mm/dd/yyyy',
+		format: 'yyyy/mm/dd',
 		keepEmptyValues: false,
 		keyboardNavigation: true,
 		language: 'en',
@@ -1698,7 +1698,7 @@
 		startDate: -Infinity,
 		startView: 0,
 		todayBtn: false,
-		todayHighlight: false,
+		todayHighlight: true,
 		updateViewDate: true,
 		weekStart: 0,
 		disableTouchKeyboard: false,
@@ -1722,13 +1722,21 @@
 	$.fn.datepicker.Constructor = Datepicker;
 	var dates = $.fn.datepicker.dates = {
 		en: {
-			days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-			daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-			daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
-			months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-			monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-			today: "Today",
-			clear: "Clear",
+      days: ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"],
+      // days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      daysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+      // daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+      daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
+			// daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
+      months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+      // months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+      monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+      // monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      today: "Hoy",
+      // today: "Today",
+      clear: "Borrar",
+      // clear: "Clear",
+      // format:"yyyy/mm/dd",
 			titleFormat: "MM yyyy"
 		}
 	};

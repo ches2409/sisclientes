@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-    Parámetros
+    Proyectos
 @endsection
 
 {{-- SECTION  Secciones internas
@@ -50,7 +50,7 @@
             <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Parámetros
+                        Proyectos
                         <small>Administrar los Tipos de Proyectos</small>
                     </h1>
                     <ol class="breadcrumb">

@@ -29,7 +29,9 @@ class CreateClientesTable extends Migration
             $table->unsignedBigInteger('estadoPropiedad');
             $table->unsignedBigInteger('proyectoInteres');
             $table->unsignedBigInteger('necesidadPrimaria');
+
             $table->unsignedBigInteger('otraNecesidad');
+
             // $table->unsignedBigInteger('bienNegociable');
             $table->unsignedBigInteger('interes');
             $table->unsignedBigInteger('referido');
@@ -37,15 +39,22 @@ class CreateClientesTable extends Migration
             $table->unsignedBigInteger('estadoCliente');
             $table->unsignedBigInteger('clasificacion');
 
-            $table->foreign( 'estadoPropiedad')->references('id')->on('propiedadestados')->onDelete('cascade');
-            $table->foreign('proyectoInteres')->references('id')->on('proyectos')->onDelete('cascade');
-            $table->foreign('necesidadPrimaria')->references('id')->on('tiposProyectos')->onDelete('cascade');
-            // $table->foreign('otraNecesidad')->references('id')->on('propventas')->onDelete('cascade');
-            $table->foreign('interes')->references('id')->on('tiempoinversiones')->onDelete('cascade');
-            $table->foreign('referido')->references('id')->on('referidos')->onDelete('cascade');
-            $table->foreign('estadoCliente')->references('id')->on('tipoclientes')->onDelete('cascade');
-            $table->foreign('clasificacion')->references('id')->on('clasificaciones')->onDelete('cascade');
+            /*-- SECTION relaciones
+            +======================+
+            |REFERENCIAS PARA CREAR|
+            |      RELACIONES      |
+            +======================+
+            --*/
+                $table->foreign( 'estadoPropiedad')->references('id')->on('propiedadestados')->onDelete('cascade');
+                $table->foreign('proyectoInteres')->references('id')->on('proyectos')->onDelete('cascade');
+                $table->foreign('necesidadPrimaria')->references('id')->on('tiposProyectos')->onDelete('cascade');
 
+                $table->foreign('otraNecesidad')->references('id')->on('propventas')->onDelete('cascade');
+
+                $table->foreign('interes')->references('id')->on('tiempoinversiones')->onDelete('cascade');
+                $table->foreign('referido')->references('id')->on('referidos')->onDelete('cascade');
+                $table->foreign('estadoCliente')->references('id')->on('tipoclientes')->onDelete('cascade');
+                $table->foreign('clasificacion')->references('id')->on('clasificaciones')->onDelete('cascade');
             $table->timestamps();
         });
     }

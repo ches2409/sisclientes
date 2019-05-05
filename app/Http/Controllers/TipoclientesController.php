@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tipocliente;
 use Illuminate\Http\Request;
 
 class TipoclientesController extends Controller
@@ -13,7 +14,8 @@ class TipoclientesController extends Controller
      */
     public function index()
     {
-        //
+        $tipoclientes = Tipocliente::all();
+        return view('/tipoclientes.index', compact('tipoclientes'));
     }
 
     /**
@@ -23,7 +25,7 @@ class TipoclientesController extends Controller
      */
     public function create()
     {
-        //
+        return view('/tipoclientes.create');
     }
 
     /**
@@ -34,7 +36,11 @@ class TipoclientesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nombre' => 'required'
+        ]);
+        Tipocliente::create($request->all());
+        return redirect()->route('tipoclientes.index');
     }
 
     /**
@@ -45,7 +51,8 @@ class TipoclientesController extends Controller
      */
     public function show($id)
     {
-        //
+        $tipocliente = Tipocliente::findOrFail($id);
+        return view('/tipoclientes.edit', compact('tipocliente'));
     }
 
     /**
@@ -56,7 +63,8 @@ class TipoclientesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tipocliente = Tipocliente::findOrFail($id);
+        return view('/tipoclientes.show', compact('tipocliente'));
     }
 
     /**
@@ -68,7 +76,8 @@ class TipoclientesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Tipocliente::findOrFail($id)->update($request->all());
+        return redirect()->route('tipoclientes.index');
     }
 
     /**
@@ -79,6 +88,7 @@ class TipoclientesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Tipocliente::findOrFail($id)->delete();
+        return redirect()->route('tipoclientes.index');
     }
 }
