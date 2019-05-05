@@ -83,6 +83,7 @@ class TareatiposController extends Controller
     public function update(Request $request, $id)
     {
         Tareatipo::findOrFail($id)->update($request->all());
+        Flash::warning('el tipo de tarea ha sido editado');
         return redirect()->route('tareatipos.index');
     }
 
