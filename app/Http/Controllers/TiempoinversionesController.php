@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Tiempoinversion;
+use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 
 class TiempoinversionesController extends Controller
@@ -39,7 +40,11 @@ class TiempoinversionesController extends Controller
         $this->validate($request, [
             'nombre' => 'required'
         ]);
-        Tiempoinversion::create($request->all());
+        // Tiempoinversion::create($request->all());
+
+        $tiempoinversion = Tiempoinversion::create($request->all());
+        Flash::success('Se ha creado el tiempo de interes "' . $tiempoinversion->nombre . '" de manera correcta')->important();
+
         return redirect()->route('tiempoinversiones.index');
     }
 
@@ -76,7 +81,12 @@ class TiempoinversionesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Tiempoinversion::findOrFail($id)->update($request->all());
+        // Tiempoinversion::findOrFail($id)->update($request->all());
+
+        $tiempoinversion = Tiempoinversion::findOrfail($id);
+        $tiempoinversion->update($request->all());
+        Flash::warning('Se ha editado "' . $tiempoinversion->nombre . '" de manera correcta')->important();
+
         return redirect()->route('tiempoinversiones.index');
     }
 
@@ -88,7 +98,12 @@ class TiempoinversionesController extends Controller
      */
     public function destroy($id)
     {
-        Tiempoinversion::findOrFail($id)->delete();
+        // Tiempoinversion::findOrFail($id)->delete();
+
+        $tiempoinversion = Tiempoinversion::findOrFail($id);
+        $tiempoinversion->delete();
+        Flash('Se ha eliminado "' . $tiempoinversion->nombre . '" de manera correcta')->error()->important();
+
         return redirect()->route('tiempoinversiones.index');
     }
 }

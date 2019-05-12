@@ -5,6 +5,10 @@
     Clientes
 @endsection
 
+@section('tablas')
+    @include('/tipoclientes.tabla')
+@endsection
+
 {{-- SECTION  Secciones internas
 +==========================================================+
 |                      SECCIÓN DONDE                       |
@@ -24,7 +28,7 @@
                     <div class="col-lg-4">
                         <h1>
                             <i class="fa fa-check-circle"></i>
-                            estados del cliente
+                            Estados de los clientes
                         </h1>
                     </div>
                     <div class="col-lg-3">
@@ -38,12 +42,15 @@
                         </div>
                         <div><br></div>
                     </div>
+                    <div class="col-lg-5">
+                        @include('flash::message')
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box-header">
-                        <h3 class="box-title">Crear, editar o eliminar los estados del cliente</h3>
+                        <h3 class="box-title">Crear, editar o eliminar</h3>
                         <div class="box-tools">
                             <a class="btn bg-dark btn-flat" href="{{ route('tipoclientes.create') }}">
                                 <span class="glyphicon glyphicon-file"></span>
@@ -55,42 +62,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="box-body table-responsive no-padding">
-                        <div class="box box-warning">
-                            <table class="table table-hover table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Estado del cliente</th>
-                                        <th>Descripción</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($tipoclientes as $tipocliente)
-                                        <tr>
-                                            <td>{{ $tipocliente->nombre }}</td>
-                                            <td>{{ $tipocliente->descripcion }}</td>
-                                            <td>
-                                                <a class="btn bg-dark btn-flat" href="{{ route('tipoclientes.show', $tipocliente->id) }}">
-                                                    <span class="glyphicon glyphicon-pencil"></span>
-                                                    Editar
-                                                </a>
-
-                                                <form style="display:inline" method="POST" action="{{ route ('tipoclientes.destroy', $tipocliente->id) }}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn bg-dark btn-flat">
-                                                        <span class="glyphicon glyphicon-trash"></span>
-                                                        Eliminar
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    @yield('tablas')
                 </div>
             </div>
         </div>
@@ -133,7 +105,7 @@
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> SISGestión</a></li>
                         <li>Parámetros</li>
-                        <li class="active">Clientes</li>
+                        <li class="active">Estados del Cliente</li>
                     </ol>
                 </section>
 

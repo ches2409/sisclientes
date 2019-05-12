@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cargo;
+use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 
 class CargosController extends Controller
@@ -39,7 +40,11 @@ class CargosController extends Controller
         $this->validate($request, [
             'nombre' => 'required'
         ]);
-        Cargo::create($request->all());
+        // Cargo::create($request->all());
+
+        $cargo = Cargo::create($request->all());
+        Flash::success('el cargo "' . $cargo->nombre . '" ha sido creado')->important();
+
         return redirect()->route('cargos.index');
     }
 
@@ -76,7 +81,12 @@ class CargosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Cargo::findOrFail($id)->update($request->all());
+        // Cargo::findOrFail($id)->update($request->all());
+
+        $cargo = Cargo::findOrfail($id);
+        $cargo->update($request->all());
+        Flash::warning('el cargo "'.$cargo->nombre.'" ha sido editado')->important();
+
         return redirect()->route('cargos.index');
     }
 
@@ -88,7 +98,12 @@ class CargosController extends Controller
      */
     public function destroy($id)
     {
-        Cargo::findOrFail($id)->delete();
+        // Cargo::findOrFail($id)->delete();
+
+        $cargo = Cargo::findOrFail($id);
+        $cargo->delete();
+        Flash('Se ha eliminado "' . $cargo->nombre . '" de manera correcta')->error()->important();
+
         return redirect()->route('cargos.index');
     }
 }

@@ -5,6 +5,10 @@
     Interés
 @endsection
 
+@section('tablas')
+    @include('/tiempoInversiones.tabla')
+@endsection
+
 {{-- SECTION  Secciones internas
 +==========================================================+
 |                      SECCIÓN DONDE                       |
@@ -38,6 +42,9 @@
                         </div>
                         <div><br></div>
                     </div>
+                    <div class="col-lg-5">
+                        @include('flash::message')
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -56,47 +63,10 @@
                         </div>
                         <div><p></p></div>
                     </div>
-                    <div class="box-body table-responsive no-padding">
-                        <div class="box box-warning">
-                            <table class="table table-hover table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Tiempo de inversión</th>
-                                        <th>Descripción</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($tiempoinversiones as $tiempoinversion)
-                                        <tr>
-                                            <td>{{ $tiempoinversion->nombre }}</td>
-                                            <td>{{ $tiempoinversion->descripcion }}</td>
-                                            <td>
-                                                <a class="btn bg-dark btn-flat" href="{{ route('tiempoinversiones.show', $tiempoinversion->id) }}">
-                                                    <span class="glyphicon glyphicon-pencil"></span>
-                                                    Editar
-                                                </a>
-
-                                                <form style="display:inline" method="POST" action="{{ route ('tiempoinversiones.destroy', $tiempoinversion->id) }}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn bg-dark btn-flat">
-                                                        <span class="glyphicon glyphicon-trash"></span>
-                                                        Eliminar
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    @yield('tablas')
                 </div>
             </div>
         </div>
-
-
     @endsection
 
 
@@ -133,7 +103,8 @@
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> SISGestión</a></li>
-                        <li class="active">Interés</li>
+                        <li>Parámetros</li>
+                        <li class="active">Tiempo de inversión</li>
                     </ol>
                 </section>
 

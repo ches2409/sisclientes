@@ -44,6 +44,5 @@
                 @endforeach
             </tbody>
         </table>
-        @include('flash::message')
     </div>
 </div>

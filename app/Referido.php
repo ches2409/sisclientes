@@ -11,4 +11,13 @@ class Referido extends Model
     public function cliente(){
         return $this->belongsTo(Cliente::class);
     }
+
+    public function setAttribute($nombre, $value)
+    {
+        $this->attributes[$nombre]=ucwords($value);
+    }
+    public function setParentescoAttribute($parentesco, $value)
+    {
+        $this->attributes[$parentesco] = ucwords($value);
+    }
 }

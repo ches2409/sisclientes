@@ -55,8 +55,8 @@
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> SISGestión</a></li>
                         <li>Parámetros</li>
-                        <li>Estados del cliente</li>
-                        <li class="active">crear</li>
+                        <li><a href="{{ route('tipoclientes.index') }}">Estados del Cliente</a></li>
+                        <li class="active">Crear</li>
                     </ol>
                 </section>
 

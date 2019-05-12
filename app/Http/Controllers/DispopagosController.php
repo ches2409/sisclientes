@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Dispopago;
+use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 
 class DispopagosController extends Controller
@@ -40,7 +41,11 @@ class DispopagosController extends Controller
         $this->validate($request, [
             'nombre' => 'required'
         ]);
-        Dispopago::create($request->all());
+        // Dispopago::create($request->all());
+
+        $dispopago = Dispopago::create($request->all());
+        Flash::success('Se ha creado la disponibilidad de pago "' . $dispopago->nombre . '" de manera correcta')->important();
+
         return redirect()->route('dispopagos.index');
     }
 
@@ -77,7 +82,12 @@ class DispopagosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Dispopago::findOrFail($id)->update($request->all());
+        // Dispopago::findOrFail($id)->update($request->all());
+
+        $dispopago = Dispopago::findOrfail($id);
+        $dispopago->update($request->all());
+        Flash::warning('Se ha editado "' . $dispopago->nombre . '" de manera correcta')->important();
+
         return redirect()->route('dispopagos.index');
     }
 
@@ -89,8 +99,12 @@ class DispopagosController extends Controller
      */
     public function destroy($id)
     {
-        Dispopago::findOrFail($id)->delete();
-        Flash::error('Se ha eliminado de manera correcta');
+        // Dispopago::findOrFail($id)->delete();
+
+        $dispopago = Dispopago::findOrFail($id);
+        $dispopago->delete();
+        Flash('Se ha eliminado "' . $dispopago->nombre . '" de manera correcta')->error()->important();
+
         return redirect()->route('dispopagos.index');
     }
 }

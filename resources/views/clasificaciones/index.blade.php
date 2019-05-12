@@ -4,6 +4,10 @@
     clasificación
 @endsection
 
+@section('tablas')
+    @include('/clasificaciones.tabla')
+@endsection
+
 {{-- SECTION  Secciones internas
 +==========================================================+
 |                      SECCIÓN DONDE                       |
@@ -37,6 +41,9 @@
                         </div>
                         <div><br></div>
                     </div>
+                    <div class="col-lg-5">
+                        @include('flash::message')
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -54,81 +61,8 @@
                                 Salir
                             </a>
                         </div>
-
                     </div>
-                    <div class="box-body table-responsive no-padding">
-                        <div class="box box-warning">
-                            <table class="table table-hover table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Nombre de la clasificación</th>
-                                        <th>Descripción</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($clasificaciones as $clasificacion)
-                                        <tr>
-                                            <td>
-                                                @if ($clasificacion->nombre=='AAA')
-                                                    <span class="label label-success" style="width: 150px;">
-                                                        {{ $clasificacion->nombre }}
-                                                    </span>
-                                                @elseif($clasificacion->nombre=='B+')
-                                                    {{-- <span class="label label-info"> --}}
-                                                    <span class="label label-primary" style="width: 150px;">
-                                                        {{ $clasificacion->nombre }}
-                                                    </span>
-                                                @elseif($clasificacion->nombre=='B')
-                                                    {{-- <span class="label label-warning"> --}}
-                                                    <span class="label label-warning" style="width: 150px;">
-                                                        {{ $clasificacion->nombre }}
-                                                    </span>
-                                                @elseif($clasificacion->nombre=='C')
-                                                    {{-- <span class="label label-succes"> --}}
-                                                    <span class="label label-danger" style="width: 150px;">
-                                                        {{ $clasificacion->nombre }}
-                                                    </span>
-                                                @else
-                                                    <span class="label label-info" style="width: 150px;">
-                                                        {{ $clasificacion->nombre }}
-                                                    </span>
-                                                @endif
-                                            </td>
-                                            <td>{{ $clasificacion->descripcion }}</td>
-                                            <td>
-                                                <a class="btn bg-dark btn-flat" href="{{ route('clasificaciones.show', $clasificacion->id) }}">
-                                                    <span class="glyphicon glyphicon-pencil"></span>
-                                                    Editar
-                                                </a>
-
-                                                <form style="display:inline" method="POST" action="{{ route ('clasificaciones.destroy', $clasificacion->id) }}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn bg-dark btn-flat">
-                                                        <span class="glyphicon glyphicon-trash"></span>
-                                                        Eliminar
-                                                    </button>
-                                                </form>
-                                                {{-- <a class="btn bg-dark btn-flat" href="">
-                                                    <span class="glyphicon glyphicon-trash"></span>
-                                                    Eliminar
-                                                </a> --}}
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    {{-- <a class="btn bg-dark btn-flat" href="{{ route('clasificaciones.create') }}">
-                        <span class="glyphicon glyphicon-file"></span>
-                        Nuevo
-                    </a>
-                    <a class="btn bg-dark btn-flat" href="/">
-                        <span class="glyphicon glyphicon-remove"></span>
-                        Salir
-                    </a> --}}
+                    @yield('tablas')
                 </div>
             </div>
         </div>
@@ -165,8 +99,8 @@
             <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Tipos de clasificación
-                        <small>Administrar los tipos de clasificación de la empresa</small>
+                        Clasificación de clientes
+                        <small>Administrar los tipos de clasificación que se realizan a los clientes de la empresa</small>
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> SISGestión</a></li>

@@ -12,4 +12,9 @@ class Tipoproyecto extends Model
     public function proyectos(){
         return $this->hasMany(Proyecto::class, 'tipoProyecto_id');
     }
+
+    public function setAttribute($tipo_proyecto, $value)
+    {
+        $this->attributes[$tipo_proyecto] = ucwords($value);
+    }
 }

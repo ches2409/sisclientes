@@ -12,11 +12,11 @@
                 @foreach ($tareatipos as $tareatipo)
                     <tr>
                         <td>
-                            @if ($tareatipo->tipoTarea=='Llamada de cobro')
+                            @if ($tareatipo->tipoTarea=='Llamada De Cobro')
                                 <span class="btn bg-red btn-flat" style="width: 150px;">
                                     {{ $tareatipo->tipoTarea }}
                                 </span>
-                            @elseif($tareatipo->tipoTarea=='Llamada de contacto')
+                            @elseif($tareatipo->tipoTarea=='Llamada De Contacto')
                                 {{-- <span class="label label-info"> --}}
                                 <span class="btn bg-teal btn-flat" style="width: 150px;">
                                     {{ $tareatipo->tipoTarea }}
@@ -57,16 +57,16 @@
                                     Eliminar
                                 </button>
 
-                                {{-- <button type="button" class="btn bg-dark btn-flat pruebaConfirm">
+                                {{-- <button type="button" class="btn bg-dark btn-flat pruebaConfirm eliminar" id="{{ $tareatipo->id }}">
                                     Eliminarlo {{ $tareatipo->tipoTarea }}
                                 </button> --}}
 
                             </form>
+
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-        @include('flash::message')
     </div>
 </div>

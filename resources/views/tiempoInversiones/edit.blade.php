@@ -112,8 +112,10 @@
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> SISGestión</a></li>
                         <li>Parámetros</li>
-                        <li class="active">Tiempo de inversión</li>
-                        <li>Editar</li>
+                        <li><a href="{{ route('tiempoinversiones.index') }}">Tiempo de inversión</a></li>
+                        <li class="active">
+                            <span class="text-info">Editar</span>
+                        </li>
                     </ol>
                 </section>
 

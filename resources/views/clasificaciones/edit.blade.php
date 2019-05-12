@@ -67,7 +67,6 @@
                             <span class="glyphicon glyphicon-remove"></span>
                             Salir
                         </a>
-
                     </div>
                 </form>
                 @endif
@@ -112,7 +111,7 @@
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> SISGestión</a></li>
                         <li>Parámetros</li>
-                        <li>Clasificación</li>
+                        <li><a href="{{ route('clasificaciones.index') }}">Tipos de clasificación</a></li>
                         <li class="active">Editar</li>
                     </ol>
                 </section>

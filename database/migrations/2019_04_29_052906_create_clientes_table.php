@@ -25,7 +25,7 @@ class CreateClientesTable extends Migration
             $table->string('telefono2', 20)->nullable();
             $table->enum('estadoCivil', ['soltero(a)', 'casado(a)', 'viudo(a)', 'divorsiado(a)', 'union libre', 'no responde'])->default('no responde');
             $table->enum('ocupacion', ['empleado', 'independiente', 'empresario'])->default('independiente');
-            // $table->unsignedBigInteger('disponibilidadPago');
+            $table->unsignedBigInteger('disponibilidadPago');
             $table->unsignedBigInteger('estadoPropiedad');
             $table->unsignedBigInteger('proyectoInteres');
             $table->unsignedBigInteger('necesidadPrimaria');
@@ -45,7 +45,8 @@ class CreateClientesTable extends Migration
             |      RELACIONES      |
             +======================+
             --*/
-                $table->foreign( 'estadoPropiedad')->references('id')->on('propiedadestados')->onDelete('cascade');
+                $table->foreign( 'disponibilidadPago')->references('id')->on('dispopagos')->onDelete('cascade');
+                $table->foreign('estadoPropiedad')->references('id')->on('propiedadestados')->onDelete('cascade');
                 $table->foreign('proyectoInteres')->references('id')->on('proyectos')->onDelete('cascade');
                 $table->foreign('necesidadPrimaria')->references('id')->on('tiposProyectos')->onDelete('cascade');
 

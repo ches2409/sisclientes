@@ -13,22 +13,7 @@
     <li class="{{ activeMenu('/') }}">
         <a href="{{ route ('inicio') }}">
             <i class="fa fa-home"></i> <span>Inicio</span>
-            {{-- <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-            </span> --}}
         </a>
-        {{-- sub elemento del menú --}}
-        {{-- <ul class="treeview-menu">
-            <li class="active">
-                <a href="/resources/views/admin/index">
-                    <i class="fa fa-circle-o"></i> Dashboard v1
-                </a>
-            </li>
-            <li>
-                <a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2
-                </a>
-            </li>
-        </ul> --}}
     </li>
 {{-- STUB Item de Menú
 +=======================+
@@ -40,18 +25,7 @@
         <a href="{{ route('empleados.index') }}">
             <i class="fa fa-id-card"></i>
             <span>Empleados</span>
-            {{-- <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i> --}}
         </a>
-        {{-- sub elemento del menú --}}
-        {{-- <ul class="treeview-menu">
-            <li>
-                <a href="#">
-                    <i class="fa fa-plus-circle"></i>
-                    crear usuario
-                </a>
-            </li>
-        </ul> --}}
     </li>
 
 {{-- STUB Item de Menú
@@ -64,18 +38,7 @@
         <a href="{{ route ('clientes') }}">
             <i class="fa fa-address-book"></i>
             <span>Clientes</span>
-            {{-- <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i> --}}
         </a>
-        {{-- SUB ELEMENTO DEL MENU --}}
-        {{-- <ul class="treeview-menu">
-            <li>
-                <a href="#">
-                    <i class="fa fa-plus-circle"></i>
-                    crear cliente
-                </a>
-            </li>
-        </ul> --}}
     </li>
 {{-- STUB Item de Menú
 +======================+
@@ -87,18 +50,7 @@
         <a href="{{ route ('proyectos.index') }}">
             <i class="fa fa-briefcase"></i>
             <span>Proyectos</span>
-            {{-- <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i> --}}
         </a>
-        {{-- SUB ELEMENTO DEL MENU --}}
-        {{-- <ul class="treeview-menu">
-            <li>
-                <a href="#">
-                    <i class="fa fa-plus-circle"></i>
-                    crear proyecto
-                </a>
-            </li>
-        </ul> --}}
     </li>
 {{-- STUB Item de Menú
 +========================+
@@ -110,18 +62,7 @@
         <a href="{{ route ('tareas.index') }}">
             <i class="fa fa-calendar"></i>
             <span>Actividades</span>
-            {{-- <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i> --}}
         </a>
-        {{-- sub elemento del menú --}}
-        {{-- <ul class="treeview-menu">
-            <li>
-                <a href="#">
-                    <i class="fa fa-plus-circle"></i>
-                    crear actividad
-                </a>
-            </li>
-        </ul> --}}
     </li>
 {{-- STUB Item de Menú
 +=======================+
@@ -181,14 +122,14 @@
                 </a>
             </li> --}}
             {{-- sub elemento interno --}}
-            <li {{ activeMenu('propventas') }}>
+            <li class="{{ activeMenu('propventas') }}">
                 <a href="{{ route('propventas.index') }}">
                     <i class="fa fa-shopping-bag"></i>
                     propiedades negociables
                 </a>
             </li>
             {{-- sub elemento interno --}}
-            <li {{ activeMenu('dispopagos') }}>
+            <li class="{{ activeMenu('dispopagos') }}">
                 <a href="{{ route('dispopagos.index') }}">
                     <i class="fa fa-money"></i>
                     Disponibilidad de pago

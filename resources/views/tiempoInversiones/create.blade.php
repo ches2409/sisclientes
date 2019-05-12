@@ -54,7 +54,11 @@
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> SISGestión</a></li>
-                        <li class="active">Interés</li>
+                        <li>Parámetros</li>
+                        <li><a href="{{ route('tiempoinversiones.index') }}">Tiempo de inversión</a></li>
+                        <li class="active">
+                            <span class="text-info">Crear</span>
+                        </li>
                     </ol>
                 </section>
 

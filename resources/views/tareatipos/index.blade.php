@@ -22,7 +22,6 @@
 
     @section('content')
         <div class="content">
-            {{-- <h1>tareatipos</h1> --}}
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-lg-4">
@@ -32,17 +31,18 @@
                         </h1>
                     </div>
                     <div class="col-lg-3">
-                        {{-- <div class="container"> --}}
-                            <div><br></div>
-                            <div class="input-group input-group-sm" style="width: 200px;">
-                                <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscar">
+                        <div><br></div>
+                        <div class="input-group input-group-sm" style="width: 200px;">
+                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscar">
 
-                                <div class="input-group-btn">
-                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                </div>
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                             </div>
-                            <div><br></div>
-                        {{-- </div> --}}
+                        </div>
+                        <div><br></div>
+                    </div>
+                    <div class="col-lg-5">
+                        @include('flash::message')
                     </div>
                 </div>
             </div>
@@ -63,6 +63,7 @@
                         </div>
                         <div><p></p></div>
                     </div>
+
                     @yield('tablas')
                 </div>
             </div>

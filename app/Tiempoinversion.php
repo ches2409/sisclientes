@@ -12,4 +12,9 @@ class Tiempoinversion extends Model
     public function clientes(){
         return $this->hasMany(Cliente::class, 'interes');
     }
+
+    public function setAttribute($nombre, $value)
+    {
+        $this->attributes[$nombre]=ucwords($value);
+    }
 }

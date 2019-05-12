@@ -41,6 +41,9 @@
                         </div>
                         <div><br></div>
                     </div>
+                    <div class="col-lg-5">
+                        @include('flash::message')
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -103,7 +106,7 @@
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> SISGestión</a></li>
                         <li>Parámetros</li>
-                        <li class="active">Disponibilidad de pagos</li>
+                        <li class="active">Disponibilidad de pago</li>
                     </ol>
                 </section>
 

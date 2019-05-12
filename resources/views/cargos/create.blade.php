@@ -54,7 +54,9 @@
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> SISGestión</a></li>
-                        <li class="active">Cargos</li>
+                        <li>Parámetros</li>
+                        <li><a href="{{ route('cargos.index') }}">Cargos</a></li>
+                        <li class="active">Crear</li>
                     </ol>
                 </section>
 

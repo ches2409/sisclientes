@@ -55,7 +55,7 @@
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> SISGestión</a></li>
                         <li>Parámetros</li>
-                        <li>Disponibilidad de pagos</li>
+                        <li><a href="{{ route('dispopagos.index') }}">Disponibilidad de pago</a></li>
                         <li class="active">Editar</li>
                     </ol>
                 </section>

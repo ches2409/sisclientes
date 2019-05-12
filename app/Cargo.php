@@ -11,4 +11,9 @@ class Cargo extends Model
     public function empleados(){
         return $this->hasMany(Empleado::class, 'cargo_id');
     }
+
+    public function setAttribute($nombre, $value)
+    {
+        $this->attributes[$nombre] = ucwords($value);
+    }
 }

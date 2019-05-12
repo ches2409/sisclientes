@@ -55,8 +55,8 @@
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> SISGestión</a></li>
                         <li>Parámetros</li>
-                        <li>Propiedades negociables</li>
-                        <li class="active">crear</li>
+                        <li><a href="{{ route('propventas.index') }}">Propiedades negociables</a></li>
+                        <li class="active">Crear</li>
                     </ol>
                 </section>
 

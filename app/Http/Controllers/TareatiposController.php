@@ -27,7 +27,7 @@ class TareatiposController extends Controller
      */
     public function create()
     {
-        return view('/tareatipos/create');
+        return view('/tareatipos.create');
     }
 
     /**
@@ -43,9 +43,11 @@ class TareatiposController extends Controller
             'area'=>'required'
         ]);
         // $tareatipo=Tareatipo::all();
-        $tareatipo = new Tareatipo($request->all());
-        Tareatipo::create($request->all());
-        Flash::success('Se ha creado el tipo de tarea "'.$tareatipo->tipoTarea.'" de manera correcta');
+        // Tareatipo::create($request->all());
+
+        $tareatipo = Tareatipo::create($request->all());
+        Flash::success('Se ha creado el tipo de tarea "'.$tareatipo->tipoTarea.'" de manera correcta')->important();
+
         return redirect()->route('tareatipos.index');
     }
 
@@ -82,8 +84,12 @@ class TareatiposController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Tareatipo::findOrFail($id)->update($request->all());
-        Flash::warning('el tipo de tarea ha sido editado');
+        // Tareatipo::findOrFail($id)->update($request->all());
+
+        $tareatipo=Tareatipo::findOrfail($id);
+        $tareatipo->update($request->all());
+        Flash::warning( 'Se ha editado "'.$tareatipo->tipoTarea.'" de manera correcta')->important();
+
         return redirect()->route('tareatipos.index');
     }
 
@@ -93,11 +99,14 @@ class TareatiposController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy( Request $request, $id)
+    public function destroy($id)
     {
-        Tareatipo::findOrFail($id)->delete();
-        $tareatipo = new Tareatipo($request->all());
-        Flash::error( 'Se ha eliminado el tipo de tarea de manera correcta'.$tareatipo->tipoTarea);
+        // Tareatipo::findOrFail($id)->delete();
+
+        $tareatipo = Tareatipo::findOrFail($id);
+        $tareatipo->delete();
+        Flash( 'Se ha eliminado "' . $tareatipo->tipoTarea . '" de manera correcta')->error()->important();
+
         return redirect()->route( 'tareatipos.index');
     }
 }

@@ -11,4 +11,9 @@ class Propventa extends Model
     public function clientes(){
         return $this->belongsToMany('App\Cliente');
     }
+
+    public function setAttribute($nombre, $value)
+    {
+        $this->attributes[$nombre]=ucwords($value);
+    }
 }

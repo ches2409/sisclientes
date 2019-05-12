@@ -4,21 +4,30 @@ use App\Http\Controllers\EmpleadosController;
 
 Route::get('proyectos1', function(){
     // $tipoproyecto = \App\Tipoproyecto::findOrfail(1);
-    // $proyecto = App\Proyecto::findOrfail(1);
-    // return \App\Proyecto::with('tipoproyecto')->get();
-    return \App\Tipoproyecto::with('proyectos')->get();
     // return $tipoproyecto-> proyectos;
+
+    // $proyecto = \App\Proyecto::findOrfail(1);
     // return $proyecto-> tipoproyecto;
+
+    return \App\Proyecto::with('tipoproyecto')->get();
+    // return \App\Tipoproyecto::with('proyectos')->get();
+
+
 });
 
 Route::get('tareas1', function () {
-    return \App\Tarea::with('tareatipo')->get();
-    // return \App\Tareatipo::with('tareas')->get();
+    // return \App\Tarea::with('tareatipo')->get();
+    return \App\Tareatipo::with('tareas')->get();
 });
 
-Route::get('show2', function(){
-    return view('/tareas.tareas2');
+Route::get('cargos1', function(){
+    return \App\Cargo::with( 'empleados')->get();
+    // return \App\Empleado::with('cargo')->get();
 });
+
+// Route::get('show2', function(){
+//     return view('/tareas.tareas2');
+// });
 
 Route::get('/', 'PagesController@HOME')->name('inicio');
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Clasificacion;
+use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 
 class ClasificacionesController extends Controller
@@ -39,7 +40,11 @@ class ClasificacionesController extends Controller
         $this->validate($request, [
             'nombre' => 'required'
         ]);
-        Clasificacion::create($request->all());
+        // Clasificacion::create($request->all());
+
+        $clasificacion = Clasificacion::create($request->all());
+        Flash::success('Se ha creado el tipo de clasificación "' . $clasificacion->nombre . '" de manera correcta')->important();
+
         return redirect()->route('clasificaciones.index');
     }
 
@@ -76,7 +81,12 @@ class ClasificacionesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Clasificacion::findOrFail($id)->update($request->all());
+        // Clasificacion::findOrFail($id)->update($request->all());
+
+        $clasificacion = Clasificacion::findOrfail($id);
+        $clasificacion->update($request->all());
+        Flash::warning('Se ha editado "' . $clasificacion->nombre . '" de manera correcta')->important();
+
         return redirect()->route('clasificaciones.index');
     }
 
@@ -88,7 +98,12 @@ class ClasificacionesController extends Controller
      */
     public function destroy($id)
     {
-        Clasificacion::findOrFail($id)->delete();
+        // Clasificacion::findOrFail($id)->delete();
+
+        $clasificacion = Clasificacion::findOrFail($id);
+        $clasificacion->delete();
+        Flash('Se ha eliminado "' . $clasificacion->nombre . '" de manera correcta')->error()->important();
+
         return redirect()->route('clasificaciones.index');
     }
 }

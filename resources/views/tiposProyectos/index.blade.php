@@ -41,7 +41,9 @@
                         </div>
                         <div><br></div>
                     </div>
-
+                    <div class="col-lg-5">
+                        @include('flash::message')
+                    </div>
                 </div>
             </div>
             <div class="row">

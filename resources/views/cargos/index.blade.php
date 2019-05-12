@@ -42,12 +42,15 @@
                         </div>
                         <div><br></div>
                     </div>
+                    <div class="col-lg-5">
+                        @include('flash::message')
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box-header">
-                        <h3 class="box-title">Crear, editar o eliminar los cargos</h3>
+                        <h3 class="box-title">Crear, editar o eliminar</h3>
                         <div class="box-tools">
                             <a class="btn bg-dark btn-flat" href="{{ route('cargos.create') }}">
                                 <span class="glyphicon glyphicon-file"></span>
@@ -97,11 +100,12 @@
             <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Cargos
-                        <small>Administrar las Cargos de la empresa</small>
+                        Cargos y funciones
+                        <small>Administrar</small>
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> SISGestión</a></li>
+                        <li>Parámetros</li>
                         <li class="active">Cargos</li>
                     </ol>
                 </section>
@@ -109,6 +113,9 @@
                 <!-- Main content -->
                 @yield('content')
                 <!-- /.content -->
+                {{-- <div class="container">
+                    @include('flash::message')
+                </div> --}}
             </div>
         @endsection
 

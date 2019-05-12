@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Tipocliente;
+use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 
 class TipoclientesController extends Controller
@@ -39,7 +40,11 @@ class TipoclientesController extends Controller
         $this->validate($request, [
             'nombre' => 'required'
         ]);
-        Tipocliente::create($request->all());
+        // Tipocliente::create($request->all());
+
+        $tipocliente = Tipocliente::create($request->all());
+        Flash::success('Se ha creado el estado "' . $tipocliente->nombre . '" de manera correcta')->important();
+
         return redirect()->route('tipoclientes.index');
     }
 
@@ -76,7 +81,12 @@ class TipoclientesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Tipocliente::findOrFail($id)->update($request->all());
+        // Tipocliente::findOrFail($id)->update($request->all());
+
+        $tipocliente = Tipocliente::findOrfail($id);
+        $tipocliente->update($request->all());
+        Flash::warning('Se ha editado "' . $tipocliente->nombre . '" de manera correcta')->important();
+
         return redirect()->route('tipoclientes.index');
     }
 
@@ -88,7 +98,12 @@ class TipoclientesController extends Controller
      */
     public function destroy($id)
     {
-        Tipocliente::findOrFail($id)->delete();
+        // Tipocliente::findOrFail($id)->delete();
+
+        $tipocliente = Tipocliente::findOrFail($id);
+        $tipocliente->delete();
+        Flash('Se ha eliminado "' . $tipocliente->nombre . '" de manera correcta')->error()->important();
+
         return redirect()->route('tipoclientes.index');
     }
 }

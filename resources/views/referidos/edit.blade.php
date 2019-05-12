@@ -55,7 +55,8 @@
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> SISGestión</a></li>
                         <li>Parámetros</li>
-                        <li class="active">Referidos</li>
+                        <li><a href="{{ route('referidos.index') }}">Referidos</a></li>
+                        <li class="active">Editar</li>
                     </ol>
                 </section>
 

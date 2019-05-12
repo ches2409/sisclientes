@@ -40,7 +40,11 @@ class ReferidosController extends Controller
         $this->validate($request, [
             'nombre' => 'required'
         ]);
-        Referido::create($request->all());
+        // Referido::create($request->all());
+
+        $referido = Referido::create($request->all());
+        Flash::success('Se ha creado el referido "' . $referido->nombre . '" de manera correcta')->important();
+
         return redirect()->route('referidos.index');
     }
 
@@ -77,7 +81,12 @@ class ReferidosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Referido::findOrFail($id)->update($request->all());
+        // Referido::findOrFail($id)->update($request->all());
+
+        $referido = Referido::findOrfail($id);
+        $referido->update($request->all());
+        Flash::warning('Se ha editado "' . $referido->nombre . '" de manera correcta')->important();
+
         return redirect()->route('referidos.index');
     }
 
@@ -89,8 +98,12 @@ class ReferidosController extends Controller
      */
     public function destroy($id)
     {
-        Referido::findOrFail($id)->delete();
-        Flash::error('Se ha eliminado el referido de manera correcta');
+        // Referido::findOrFail($id)->delete();
+
+        $referido = Referido::findOrFail($id);
+        $referido->delete();
+        Flash('Se ha eliminado "' . $referido->nombre . '" de manera correcta')->error()->important();
+
         return redirect()->route('referidos.index');
     }
 }

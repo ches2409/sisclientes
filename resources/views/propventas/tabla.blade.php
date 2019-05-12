@@ -58,17 +58,11 @@
                                     <span class="glyphicon glyphicon-trash"></span>
                                     Eliminar
                                 </button>
-
-                                {{-- <button type="button" class="btn bg-dark btn-flat pruebaConfirm">
-                                    Eliminarlo {{ $propventa->nombre }}
-                                </button> --}}
-
                             </form>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-        @include('flash::message')
     </div>
 </div>

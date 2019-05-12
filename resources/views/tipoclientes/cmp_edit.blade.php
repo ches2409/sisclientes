@@ -2,7 +2,7 @@
     <div class="box box-warning">
 
         <div class="box-header with-border">
-            <h3 class="box-title">Crear un nuevo estado</h3>
+            <h3 class="box-title">Editar</h3>
         </div>
 
         @if (session('info'))
@@ -15,23 +15,26 @@
 
         @else
 
-        <form method="POST" action="{{ route('tipoclientes.store') }}" role="form">
+        <form method="POST" action="{{ route ('tipoclientes.update', $tipocliente->id) }}" role="form">
+            @method('PUT')
             @csrf
             <div class="box-body">
+
                 <div class="form-group">
                     <label for="nombre">
-                        Nombre del nuevo estado
+                        Estados del cliente
                     </label>
-                    <input type="text" name="nombre" class="form-control" placeholder=" ..." value="{{ old('nombre') }}">
+                    <input type="text" name="nombre" class="form-control" placeholder=" ..." value="{{ $tipocliente->nombre }}">
                     {!! $errors->first('nombre', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
                 </div>
+
 
                 <!-- textarea -->
                 <div class="form-group">
                     <label for="descripcion">
                         Descripción
                     </label>
-                    <textarea name="descripcion" class="form-control" rows="3" placeholder=" ..." >{{ old('descripcion') }}</textarea>
+                    <textarea name="descripcion" class="form-control" rows="3" placeholder=" ..." >{{ $tipocliente->descripcion }}</textarea>
                 </div>
 
             </div>
@@ -43,7 +46,7 @@
 
                 <a class="btn bg-dark btn-flat" href="{{ route('tipoclientes.index') }}">
                     <span class="glyphicon glyphicon-remove"></span>
-                    Cancelar
+                    Salir
                 </a>
 
             </div>
@@ -51,4 +54,3 @@
         @endif
     </div>
 </section>
-

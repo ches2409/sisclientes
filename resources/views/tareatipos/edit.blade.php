@@ -38,11 +38,6 @@
                     @method('PUT')
                     @csrf
                     <div class="box-body">
-                        {{-- <div class="form-group">
-                            <label>Identificador</label>
-                            <input type="text" name="" class="form-control" disabled>
-                        </div> --}}
-
 
                         <div class="form-group">
                             <label for="tipoTarea">
@@ -93,7 +88,6 @@
                     </div>
                 </form>
                 @endif
-                @include('flash::message')
             </div>
         </section>
 

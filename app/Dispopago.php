@@ -12,4 +12,9 @@ class Dispopago extends Model
         return $this->belongsToMany('App\Cliente');
 
     }
+
+    public function setAttribute($nombre, $value)
+    {
+        $this->attributes[$nombre]=ucwords($value);
+    }
 }

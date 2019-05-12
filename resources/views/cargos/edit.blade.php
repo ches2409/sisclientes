@@ -56,8 +56,8 @@
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> SISGestión</a></li>
                         <li>Parámetros</li>
-                        <li class="active">Tipos de cargos</li>
-                        <li>Editar</li>
+                        <li><a href="{{ route('cargos.index') }}">Cargos</a></li>
+                        <li class="active">Editar</li>
                     </ol>
                 </section>
 
