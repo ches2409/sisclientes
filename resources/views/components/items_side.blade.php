@@ -35,7 +35,7 @@
 +=====================+
 --}}
     <li class="{{ request()->is('clientes', 'clientes/*' ) ? 'active' : '' }}">
-        <a href="{{ route ('clientes') }}">
+        <a href="{{ route ('clientes.index') }}">
             <i class="fa fa-address-book"></i>
             <span>Clientes</span>
         </a>

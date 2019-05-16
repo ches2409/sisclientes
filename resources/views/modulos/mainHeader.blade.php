@@ -230,7 +230,7 @@
                             </p>
                         </li>
                         <!-- Menu Body -->
-                        <li class="user-body">
+                        {{-- <li class="user-body">
                             <div class="row">
                                 <div class="col-xs-4 text-center">
                                     <a href="#">Followers</a>
@@ -243,14 +243,14 @@
                                 </div>
                             </div>
                             <!-- /.row -->
-                        </li>
+                        </li> --}}
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
                                 <a href="#" class="btn btn-default btn-flat">Perfíl</a>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">Cerar sesión</a>
+                                <a href="/logout" class="btn btn-default btn-flat">Cerar sesión</a>
                             </div>
                         </li>
                     </ul>

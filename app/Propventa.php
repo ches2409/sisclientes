@@ -9,11 +9,10 @@ class Propventa extends Model
     protected $fillable = ['nombre'];
 
     public function clientes(){
-        return $this->belongsToMany('App\Cliente');
+        return $this->belongsToMany(Cliente::class);
     }
 
-    public function setAttribute($nombre, $value)
-    {
+    public function setAttribute($nombre, $value){
         $this->attributes[$nombre]=ucwords($value);
     }
 }

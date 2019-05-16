@@ -1,6 +1,6 @@
 <?php
-use App\Http\Controllers\TiposproyController;
 use App\Http\Controllers\EmpleadosController;
+use App\Http\Controllers\TiposproyController;
 
 Route::get('proyectos1', function(){
     // $tipoproyecto = \App\Tipoproyecto::findOrfail(1);
@@ -11,7 +11,6 @@ Route::get('proyectos1', function(){
 
     return \App\Proyecto::with('tipoproyecto')->get();
     // return \App\Tipoproyecto::with('proyectos')->get();
-
 
 });
 
@@ -25,13 +24,9 @@ Route::get('cargos1', function(){
     // return \App\Empleado::with('cargo')->get();
 });
 
-// Route::get('show2', function(){
-//     return view('/tareas.tareas2');
-// });
-
 Route::get('/', 'PagesController@HOME')->name('inicio');
 
-Route::get('clientes', 'PagesController@CLIENTES')->name('clientes');
+// Route::get('clientes', 'PagesController@CLIENTES')->name('clientes');
 
 
 /* SECTION Tipos de Proyectos
@@ -88,3 +83,10 @@ Route::resource('propventas', 'PropventasController');
 Route::resource('referidos', 'ReferidosController');
 
 Route::resource('dispopagos', 'DispopagosController');
+
+Route::resource('clientes', 'ClientesController');
+
+// rutas de autenticación
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');

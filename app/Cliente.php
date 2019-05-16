@@ -33,9 +33,9 @@ class Cliente extends Model
     }
 
     public function dispopagos(){
-        return $this->belongsToMany('App\Dispopago');
+        return $this->belongsToMany(Dispopago::class);
     }
     public function propventas(){
-        return $this->belongsToMany('App\Propventa');
+        return $this->belongsToMany(Propventa::class);
     }
 }

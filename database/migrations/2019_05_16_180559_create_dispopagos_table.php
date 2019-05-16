@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTiposProyectosTable extends Migration
+class CreateDispopagosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateTiposProyectosTable extends Migration
      */
     public function up()
     {
-        Schema::create('tiposProyectos', function (Blueprint $table) {
+        Schema::create('dispopagos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('tipo_proyecto');
+            $table->string('nombre')->unique();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateTiposProyectosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tiposProyectos');
+        Schema::dropIfExists('dispopagos');
     }
 }

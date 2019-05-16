@@ -17,9 +17,9 @@ class PagesController extends Controller
     /* public function USUARIOS(){
         return view('/admin.usuarios');
     } */
-    public function CLIENTES(){
+    /* public function CLIENTES(){
         return view('/admin.clientes');
-    }
+    } */
     /* public function PROYECTOS()
     {
         return view('/admin.proyectos');

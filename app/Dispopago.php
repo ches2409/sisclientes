@@ -9,8 +9,7 @@ class Dispopago extends Model
     protected $fillable = ['nombre', 'descripcion'];
 
     public function clientes(){
-        return $this->belongsToMany('App\Cliente');
-
+        return $this->belongsToMany(Cliente::class);
     }
 
     public function setAttribute($nombre, $value)
