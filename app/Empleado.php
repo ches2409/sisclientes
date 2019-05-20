@@ -16,4 +16,8 @@ class Empleado extends Model
         return $this->belongsTo(Cargo::class);
     }
 
+    public function setAttribute($nombre, $value)
+    {
+        $this->attributes[$nombre]=ucwords($value);
+    }
 }

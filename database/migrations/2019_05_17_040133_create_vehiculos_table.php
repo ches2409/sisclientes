@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDispopagosTable extends Migration
+class CreateVehiculosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateDispopagosTable extends Migration
      */
     public function up()
     {
-        Schema::create('dispopagos', function (Blueprint $table) {
+        Schema::create('vehiculos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre')->unique();
-            $table->string('descripcion');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ class CreateDispopagosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dispopagos');
+        Schema::dropIfExists('vehiculos');
     }
 }

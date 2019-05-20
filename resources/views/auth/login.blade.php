@@ -40,12 +40,14 @@
                 <form action="{{ route('login') }}" method="POST">
                     @csrf
                     <div class="form-group has-feedback">
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input type="email" name="email" class="form-control" placeholder="Email">
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        {!! $errors->first('email', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input type="password" name="password" class="form-control" placeholder="Password">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        {!! $errors->first('password', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
                     </div>
                     <div class="row">
                         <div class="col-xs-8">

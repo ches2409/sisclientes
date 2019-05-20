@@ -26,8 +26,6 @@ Route::get('cargos1', function(){
 
 Route::get('/', 'PagesController@HOME')->name('inicio');
 
-// Route::get('clientes', 'PagesController@CLIENTES')->name('clientes');
-
 
 /* SECTION Tipos de Proyectos
 +==================+
@@ -88,5 +86,11 @@ Route::resource('clientes', 'ClientesController');
 
 // rutas de autenticación
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
+Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+
+// Path resource for vehiculos
+Route::resource('vehiculos', 'VehiculosController');
+// Path resource for usuarios
+Route::resource('usuarios', 'UsuariosController')->except('create', 'store', 'show', 'edit', 'update', 'destroy');

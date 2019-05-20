@@ -38,7 +38,7 @@ class ClasificacionesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nombre' => 'required'
+            'nombre' => 'required|unique:clasificaciones'
         ]);
         // Clasificacion::create($request->all());
 

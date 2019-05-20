@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDispopagosTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateDispopagosTable extends Migration
      */
     public function up()
     {
-        Schema::create('dispopagos', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre')->unique();
-            $table->string('descripcion');
+            $table->string('llave')->unique(); //admin
+            $table->string('nombre')->nullable(); //administrador del sistema
+            $table->text('descripcion')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateDispopagosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dispopagos');
+        Schema::dropIfExists('roles');
     }
 }

@@ -12,4 +12,9 @@ class Clasificacion extends Model
     public function clientes(){
         return $this->hasMany(Cliente::class, 'clasificacion');
     }
+
+    public function setAttribute($nombre, $value)
+    {
+        $this->attributes[$nombre] = strtoupper($value);
+    }
 }

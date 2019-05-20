@@ -70,7 +70,7 @@
 |      "TREEVIEW"       |
 +=======================+
 --}}
-    <li class="{{ request()->is('usuarios', 'cargos', 'cargos/*', 'tiempoinversiones', 'tiempoinversiones/*', 'clasificaciones', 'clasificaciones/*', 'propiedadestados', 'propiedadestados/*', 'tipoclientes', 'tipoclientes/*', 'propventas', 'propventas/*', 'referidos', 'referidos/*', 'dispopagos', 'dispopagos/*',  'necesidadesPrim','tiposProyectos','tiposProyectos/*', 'tareatipos', 'tareatipos/*') ? 'active' : '' }} treeview">
+    <li class="{{ request()->is('usuarios', 'usuarios/*', 'cargos', 'cargos/*', 'tiempoinversiones', 'tiempoinversiones/*', 'clasificaciones', 'clasificaciones/*', 'propiedadestados', 'propiedadestados/*', 'tipoclientes', 'tipoclientes/*', 'propventas', 'propventas/*', 'referidos', 'referidos/*', 'dispopagos', 'dispopagos/*',  'necesidadesPrim','tiposProyectos','tiposProyectos/*', 'tareatipos', 'tareatipos/*') ? 'active' : '' }} treeview">
         <a href="#">
             <i class="fa fa-wrench"></i>
             <span>Parametros</span>
@@ -80,7 +80,7 @@
         {{-- sub elemento del menu --}}
         <ul class="treeview-menu">
             <li class="{{ activeMenu('usuarios') }}">
-                <a href="">
+                <a href="{{ route('usuarios.index') }}">
                     <i class="fa fa-users"></i>
                     Usuarios
                 </a>

@@ -38,7 +38,7 @@ class CargosController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nombre' => 'required'
+            'nombre' => 'required|min:3|unique:cargos'
         ]);
         // Cargo::create($request->all());
 

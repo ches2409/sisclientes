@@ -15,9 +15,13 @@ class EmpleadosController extends Controller
     public function index()
     {
         // $empleados = Empleado::all();
-        $empleados = Empleado::orderBy('id', 'ASC')->paginate(10);
+        // $empleados = Empleado::orderBy('id', 'ASC')->paginate(10);
+
+        $empleados = Empleado::with(['cargo'])->get();
 
         return view('/empleados.index', compact('empleados'));
+
+
     }
 
     /**

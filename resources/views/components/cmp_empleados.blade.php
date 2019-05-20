@@ -46,7 +46,7 @@
                         Fecha de Nacimiento
                     </label>
                     <div class="col-sm-9">
-                        <input type="date" name="fechaNacimiento" class="form-control" placeholder=" ..." value="{{ old('fechaNacimiento') }}">
+                        <input type="text" name="fechaNacimiento" class="form-control datepicker datemask3" placeholder=" ..." value="{{ old('fechaNacimiento') }}">
                         {!! $errors->first('fechaNacimiento', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
                     </div>
                 </div>
@@ -80,13 +80,28 @@
 
                 <div class="form-group">
                     <label for="cargo_id" class="col-sm-2 control-label">
-                        Cargo
+                        Cargos
                     </label>
                     <div class="col-sm-9">
                         <input type="text" name="cargo_id" class="form-control" placeholder=" ..." value="{{ old('cargo_id') }}">
                         {!! $errors->first('cargo_id', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
                     </div>
                 </div>
+
+                {{-- <div class="form-group">
+                    <label for="cargo_id" class="col-sm-2 control-label">
+                        Cargo
+                    </label>
+                    <div class="col-sm-9">
+                        <select class="form-control custom-select" name="cargo_id">
+                            <option value="" selected>Seleccione una área...</option>
+                            <option value="" selected>Auxiliar Administrativo</option>
+                            <option value="" selected>Auxiliar Contable</option>
+                            <option value="" selected>Auxiliar Comercial</option>
+                            <option value="" selected>Gerente de Ventas</option>
+                        </select>
+                    </div>
+                </div> --}}
 
 
             </div>

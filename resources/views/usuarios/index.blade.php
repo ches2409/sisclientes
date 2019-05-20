@@ -1,12 +1,10 @@
 @extends('layout')
 
-@section('title')
-    cargos
-@endsection
-
+@section('title', 'Usuarios')
+{{--
 @section('tablas')
-    @include('/cargos.tabla')
-@endsection
+    @include('/tiposProyectos.tabla')
+@endsection --}}
 
 {{-- SECTION  Secciones internas
 +==========================================================+
@@ -22,13 +20,12 @@
 
     @section('content')
         <div class="content">
-
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-lg-4">
                         <h1>
-                            <i class="fa fa-mortar-board"></i>
-                            Cargos
+                            <i class="fa fa-users"></i>
+                            Usuarios
                         </h1>
                     </div>
                     <div class="col-lg-3">
@@ -50,9 +47,9 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box-header">
-                        <h3 class="box-title">Crear, editar o eliminar</h3>
+                        <h3 class="box-title">Crear, editar o eliminar los tipos de proyectos</h3>
                         <div class="box-tools">
-                            <a class="btn bg-dark btn-flat" href="{{ route('cargos.create') }}">
+                            <a class="btn bg-dark btn-flat" href="{{ route('tiposProyectos.create') }}">
                                 <span class="glyphicon glyphicon-file"></span>
                                 Nuevo
                             </a>
@@ -67,6 +64,8 @@
                 </div>
             </div>
         </div>
+
+
     @endsection
 
 
@@ -98,17 +97,19 @@
             <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Cargos y funciones
-                        <small>Administrar</small>
+                        Proyectos
+                        <small>Administrar los Proyectos de la empresa</small>
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> SISGestión</a></li>
-                        <li>Parámetros</li>
-                        <li class="active">Cargos</li>
+                        <li><a href="#">Parámetros</a></li>
+                        <li class="active">tipos de Proyectos</li>
                     </ol>
                 </section>
+
                 <!-- Main content -->
                 @yield('content')
+                <!-- /.content -->
             </div>
         @endsection
 

@@ -11,4 +11,9 @@ class Proyecto extends Model
     public function tipoproyecto(){
         return $this->belongsTo(Tipoproyecto::class);
     }
+
+    public function setAttribute($proyecto, $value)
+    {
+        $this->attributes[$proyecto]=ucwords($value);
+    }
 }

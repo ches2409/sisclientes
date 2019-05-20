@@ -18,12 +18,13 @@
         <form method="POST" action="{{ route('clasificaciones.store') }}" role="form">
             @csrf
             <div class="box-body">
-                <div class="form-group">
+
+                <div class="form-group {{ $errors->has('nombre') ? 'has-error' : '' }}">
                     <label for="nombre">
                         Nombre de la nueva Clasificación
                     </label>
-                    <input type="text" name="nombre" class="form-control" placeholder=" ..." value="{{ old('nombre') }}">
-                    {!! $errors->first('nombre', '<span class=text-danger><i class="fa fa-times-circle-o"></i>:message</span>') !!}
+                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder=" ..." value="{{ old('nombre') }}">
+                    {!! $errors->first('nombre', '<span class=text-danger><i class="fa fa-times-circle-o"></i> :message</span>') !!}
                 </div>
 
                 <!-- textarea -->
@@ -31,7 +32,7 @@
                     <label for="descripcion">
                         Descripción
                     </label>
-                    <textarea name="descripcion" class="form-control" rows="3" placeholder=" ..." >{{ old('descripcion') }}</textarea>
+                    <textarea name="descripcion" id="descripcion" class="form-control" rows="3" placeholder=" ..." >{{ old('descripcion') }}</textarea>
                 </div>
 
             </div>
